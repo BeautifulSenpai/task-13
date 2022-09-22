@@ -64,6 +64,7 @@
                 Content="OK"
                 Cursor="Hand"
                 Click="Button_Click"
-                Foreground="White"/>
+                Foreground="White"
+                Style="{StaticResource MaterialDesignFlatAccentBgButton}"/>
     </Grid>
 </Window>

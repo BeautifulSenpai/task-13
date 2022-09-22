@@ -145,19 +145,19 @@ namespace WpfApp7.MVVM.ViewModel
         {
             get => _openEditItem ?? new RelayCommand(e =>
             {
-                if(SelectedTableItem.Name == "EmployeeTab" && SelectedEmployee != null)
+                if(SelectedTabItem.Name == "EmployeeTab" && SelectedEmployee != null)
                 {
                     OpenEditEmployeeWindow(SelectedEmployee);
                 }
 
-                if (SelectedTableItem.Name == "PositionsTab" && SelectedPosition != null)
+                if (SelectedTabItem.Name == "PositionsTab" && SelectedPosition != null)
                 {
-                    OpenEditEmployeeWindow(SelectedPosition);
+                    OpenEditPositionWindow(SelectedPosition);
                 }
 
-                if (SelectedTableItem.Name == "DepartmentsTab" && SelectedDepartment != null)
+                if (SelectedTabItem.Name == "DepartmentsTab" && SelectedDepartment != null)
                 {
-                    OpenEditEmployeeWindow(SelectedDepartment);
+                    OpenEditDepartmentWindow(SelectedDepartment);
                 }
 
             });
@@ -327,15 +327,14 @@ namespace WpfApp7.MVVM.ViewModel
                 Window? window = p as Window;
 
                 string resultString = "Должность не выбран!";
-                string noPositionStr = "Отдел не выбран!";
+                string noDepartmentStr = "Отдел не выбран!";
 
 
                 if (SelectedPosition != null)
                 {
                     if (PositionDepartment != null)
                     {
-                        resultString = DataWorker.EditPosition(SelectedPosition,
-                            PositionName, PositionSalary, PositionMaxCountOfEmp, PositionDepartment);
+                        resultString = DataWorker.EditPosition(SelectedPosition, PositionName, PositionSalary, PositionMaxCountOfEmp, PositionDepartment);
                         UpdateAllDataView();
                         SetNull();
                         ShowMessageToUser(resultString);
@@ -370,7 +369,7 @@ namespace WpfApp7.MVVM.ViewModel
                 if (SelectedDepartment != null)
                 {
                     
-                        resultString = DataWorker.EditPosition(SelectedDepartment, DepartmentName);
+                        resultString = DataWorker.EditDepartment(SelectedDepartment, DepartmentName);
                         UpdateAllDataView();
                         SetNull();
                         ShowMessageToUser(resultString);
@@ -389,27 +388,27 @@ namespace WpfApp7.MVVM.ViewModel
         private void UpdateDepartmentView()
         {
             AllDepartments = DataWorker.GetAllDepartments();
-            MainWindow.UpdateDepartmentView.ItemSource = null;
-            MainWindow.UpdateDepartmentView.Item.Clear();
-            MainWindow.UpdateDepartmentView.ItemSource = AllDepartments;
+            MainWindow.UpdateDepartmentView.ItemsSource = null;
+            MainWindow.UpdateDepartmentView.Items.Clear();
+            MainWindow.UpdateDepartmentView.ItemsSource = AllDepartments;
             MainWindow.UpdateDepartmentView.Items.Refresh();
         }
 
         private void UpdatePositionView()
         {
             AllPositions = DataWorker.GetAllPositions();
-            MainWindow.UpdatePositionView.ItemSource = null;
-            MainWindow.UpdatePositionView.Item.Clear();
-            MainWindow.UpdatePositionView.ItemSource = AllPositions;
+            MainWindow.UpdatePositionView.ItemsSource = null;
+            MainWindow.UpdatePositionView.Items.Clear();
+            MainWindow.UpdatePositionView.ItemsSource = AllPositions;
             MainWindow.UpdatePositionView.Items.Refresh();
         }
 
         private void UpdateEmployeeView()
         {
             AllEmployees = DataWorker.GetAllEmployees();
-            MainWindow.UpdateEmployeeView.ItemSource = null;
-            MainWindow.UpdateEmployeeView.Item.Clear();
-            MainWindow.UpdateEmployeeView.ItemSource = AllEmployees;
+            MainWindow.UpdateEmployeeView.ItemsSource = null;
+            MainWindow.UpdateEmployeeView.Items.Clear();
+            MainWindow.UpdateEmployeeView.ItemsSource = AllEmployees;
             MainWindow.UpdateEmployeeView.Items.Refresh();
         }
 

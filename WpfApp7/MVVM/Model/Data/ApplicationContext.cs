@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp7.MVVM.Model.Data
 {
-    internal class ApplicationContext : DbContext
+    class ApplicationContext : DbContext
     {
         public DbSet<Employee> Employees { get; set;  }
         public DbSet<Position> Positions { get; set; }

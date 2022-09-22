@@ -62,7 +62,7 @@
                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"/>
             <TextBox
                 x:Name="TxbNewSurname"
-                Text="{Binding Surnmae}"
+                Text="{Binding Surname}"
                 MaxLength="25"
                 FontSize="18"
                 materialDesign:TransitionAssist.DisableTransitions="True"/>
@@ -94,6 +94,7 @@
                 Content="Редактировать сотрудника"
                 Cursor="Hand"
                 Foreground="White"
+                Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                 Command="{Binding EditEmployee}"
                 CommandParameter="{Binding ElementName=EditWinEmp}"/>
     </Grid>

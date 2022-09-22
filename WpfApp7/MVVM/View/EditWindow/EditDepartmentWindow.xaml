@@ -71,6 +71,7 @@
                 Content="Редактировать отдел"
                 Cursor="Hand"
                 Foreground="White"
+                Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                 Command="{Binding EditDepartment}"
                 CommandParameter="{Binding ElementName=EditWindDep}"/>
     </Grid>

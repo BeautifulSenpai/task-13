@@ -95,6 +95,7 @@
                 Content="Редактировать должность"
                 Cursor="Hand"
                 Foreground="White"
+                Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                 Command="{Binding EditPosition}"
                 CommandParameter="{Binding ElementName=EditWinPos}"/>
     </Grid>

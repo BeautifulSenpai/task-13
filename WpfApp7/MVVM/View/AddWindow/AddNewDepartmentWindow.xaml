@@ -71,6 +71,7 @@
                 Content="Добавить отдел"
                 Cursor="Hand"
                 Foreground="White"
+                Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                 Command="{Binding CreateNewDepartment}"
                 CommandParameter="{Binding ElementName=AddNewDepartmentWin}"/>
     </Grid>

@@ -44,6 +44,7 @@
                     <Button Style="{StaticResource MaterialDesignFlatButton}"
                             x:Name="BtnClose"
                             Click="BtnClose_Click"
+                            
                             Cursor="Hand"
                             Margin="0 0 5 0">
                         <materialDesign:PackIcon Kind="Close"
@@ -62,7 +63,7 @@
                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"/>
             <TextBox
                 x:Name="TxbSurname"
-                Text="{Binding Surnmae}"
+                Text="{Binding Surname}"
                 MaxLength="25"
                 FontSize="18"
                 materialDesign:TransitionAssist.DisableTransitions="True"/>
@@ -94,6 +95,7 @@
                 Content="Добавить сотрудника"
                 Cursor="Hand"
                 Foreground="White"
+                Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                 Command="{Binding CreateNewEmployee}"
                 CommandParameter="{Binding ElementName=AddNewEmployeeWin}"/>
     </Grid>

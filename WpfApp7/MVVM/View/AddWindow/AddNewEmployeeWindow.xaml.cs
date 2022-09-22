@@ -23,5 +23,10 @@ namespace WpfApp7.MVVM.View.AddWindow
         {
             InitializeComponent();
         }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
