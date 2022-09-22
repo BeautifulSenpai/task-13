@@ -63,7 +63,7 @@
                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"/>
             <TextBox
                 x:Name="TxbSurname"
-                Text="{Binding Surname}"
+                Text="{Binding EmployeeSurname}"
                 MaxLength="25"
                 FontSize="18"
                 materialDesign:TransitionAssist.DisableTransitions="True" Cursor="Arrow"/>
@@ -71,7 +71,7 @@
                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"/>
             <TextBox
                 x:Name="TxbName"
-                Text="{Binding Name}"
+                Text="{Binding EmployeeName}"
                 MaxLength="25"
                 FontSize="18"
                 materialDesign:TransitionAssist.DisableTransitions="True"/>
@@ -79,7 +79,7 @@
                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"/>
             <TextBox
                 x:Name="TxbPhone"
-                Text="{Binding Phone}"
+                Text="{Binding EmployeePhone}"
                 MaxLength="25"
                 FontSize="18"
                 materialDesign:TransitionAssist.DisableTransitions="True"/>

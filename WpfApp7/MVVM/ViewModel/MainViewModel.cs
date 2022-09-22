@@ -238,15 +238,15 @@ namespace WpfApp7.MVVM.ViewModel
                     {
                         SetRedBlockControl(window, "TxbName");
                     }
-                    if (EmployeeName == null || EmployeeSurname.Replace(" ", "").Length == 0)
+                    if (EmployeeSurname == null || EmployeeSurname.Replace(" ", "").Length == 0)
                     {
                         SetRedBlockControl(window, "TxbSurname");
                     }
-                    if (EmployeeName == null || EmployeePhone.Replace(" ", "").Length == 0)
+                    if (EmployeePhone == null || EmployeePhone.Replace(" ", "").Length == 0)
                     {
                         SetRedBlockControl(window, "TxbPhone");
                     }
-                    if (PositionDepartment == null)
+                    if (EmployeePosition == null)
                     {
                         MessageBox.Show("Должность не выбрана", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
