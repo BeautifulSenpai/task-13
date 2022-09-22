@@ -65,15 +65,15 @@
                 MaxLength="25"
                 FontSize="18"
                 Text="{Binding PositionName}"
-                materialDesign:TransitionAssist.DisableTransitions="True"/>
+                materialDesign:TransitionAssist.DisableTransitions="True" Cursor="Arrow"/>
             <TextBlock Text="Зарплата"
                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"/>
             <TextBox
                 x:Name="TxbSalary"
                 MaxLength="25"
                 FontSize="18"
-                Text="{Binding Salary}"
-                materialDesign:TransitionAssist.DisableTransitions="True"/>
+                Text="{Binding PositionSalary}"
+                materialDesign:TransitionAssist.DisableTransitions="True" Cursor="Arrow"/>
             <TextBlock Text="Макс. кол-во сотрудников"
                        Margin="0 8 0 0"
                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"/>
@@ -85,7 +85,7 @@
                 materialDesign:TransitionAssist.DisableTransitions="True"/>
             <ComboBox x:Name="CmbDepartment"
                       ItemsSource="{Binding AllDepartments}"
-                      SelectedItem="{Binding PositiobDepartment}"
+                      SelectedItem="{Binding PositionDepartment}"
                       DisplayMemberPath="DepartmentName"
                       Margin="0 5 0 0"
                       materialDesign:HintAssist.Hint="Отдел"

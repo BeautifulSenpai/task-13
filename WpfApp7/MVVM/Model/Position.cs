@@ -21,13 +21,19 @@ namespace WpfApp7.MVVM.Model
         [NotMapped]
         public Department PositionDepartment
         {
-            get => DataWorker.GetDepartmentByID(DepartmentID);
+            get
+            {
+                return DataWorker.GetDepartmentByID(DepartmentID);
+            }
         }
 
         [NotMapped]
         public List<Employee> PositionEmployees
         {
-            get => DataWorker.GetAllEmployeesByPositionID(ID);
+            get
+            {
+                return DataWorker.GetAllEmployeesByPositionID(ID);
+            }
         }
     }
 }

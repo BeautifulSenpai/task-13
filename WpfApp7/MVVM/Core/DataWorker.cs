@@ -40,7 +40,7 @@ namespace WpfApp7.MVVM.Core
             string result = "Такой отдел уже есть";
             using (ApplicationContext db = new ApplicationContext())
             {
-                bool checkIsExist = db.Departments.Any(x => x.DepartmentName == departmentName);
+                bool checkIsExist = db.Departments.Any(a => a.DepartmentName == departmentName);
                 if (!checkIsExist)
                 {
                     db.Departments.Add(new Department
@@ -48,12 +48,10 @@ namespace WpfApp7.MVVM.Core
                         DepartmentName = departmentName
                     });
                     db.SaveChanges();
-                    result = "Отдел уже создан";
+                    result = "Отдел успешно создан";
                 }
                 return result;
-
             }
-
         }
 
         public static string CreatePosition(string positionName, decimal salary, int maxCountOfEmployees, Department department)
@@ -61,8 +59,7 @@ namespace WpfApp7.MVVM.Core
             string result = "Такая должность уже есть";
             using (ApplicationContext db = new ApplicationContext())
             {
-                bool checkIsExist = db.Positions.Any(a => a.PositionName == positionName &&
-                a.Salary == salary && a.MaxCountOfEmployees == maxCountOfEmployees);
+                bool checkIsExist = db.Positions.Any(a => a.PositionName == positionName && a.Salary == salary && a.MaxCountOfEmployees == maxCountOfEmployees);
                 if (!checkIsExist)
                 {
                     db.Positions.Add(new Position
@@ -76,7 +73,6 @@ namespace WpfApp7.MVVM.Core
                     result = "Должность успешно создана";
                 }
                 return result;
-
             }
         }
 
@@ -85,8 +81,7 @@ namespace WpfApp7.MVVM.Core
             string result = "Такой сотрудник уже есть";
             using (ApplicationContext db = new ApplicationContext())
             {
-                bool checkIsExist = db.Employees.Any(a => a.Name == name &&
-                a.Surname == surname && a.Phone == phone);
+                bool checkIsExist = db.Employees.Any(a => a.Name == name && a.Surname == surname && a.Phone == phone);
                 if (!checkIsExist)
                 {
                     db.Employees.Add(new Employee
@@ -99,9 +94,7 @@ namespace WpfApp7.MVVM.Core
                     result = "Сотрудник успешно добавлен";
                 }
                 return result;
-
             }
-
         }
 
         public static string DeleteDepartment(Department department)
@@ -208,7 +201,7 @@ namespace WpfApp7.MVVM.Core
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                return db.Departments.FirstOrDefault(p => p.ID == id);
+                return db.Departments.FirstOrDefault(d => d.ID == id);
             }
         }
 

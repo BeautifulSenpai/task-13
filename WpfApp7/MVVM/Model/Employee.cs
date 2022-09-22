@@ -20,7 +20,10 @@ namespace WpfApp7.MVVM.Model
         [NotMapped]
         public Position EmployeePosition
         {
-            get => DataWorker.GetPositionByID(PositionID);
+            get
+            {
+                return DataWorker.GetPositionByID(PositionID);
+            }
         }
        
     }

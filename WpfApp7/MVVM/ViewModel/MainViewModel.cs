@@ -46,11 +46,6 @@ namespace WpfApp7.MVVM.ViewModel
             }
         }
 
-        private void OnPropertyChanged()
-        {
-            throw new NotImplementedException();
-        }
-
         private List<Position> _allPositions = DataWorker.GetAllPositions();
         public List<Position> AllPositions
         {
@@ -120,7 +115,10 @@ namespace WpfApp7.MVVM.ViewModel
 
         public RelayCommand OpenAddDepartmentWindow
         {
-            get => _openAddDepartmentWindow ?? new RelayCommand(e => { OpenAddNewDepartmentWindow(); });
+            get
+            {
+                return _openAddDepartmentWindow ?? new RelayCommand(e => { OpenAddNewDepartmentWindow(); });
+            }
 
         }
 
@@ -128,14 +126,19 @@ namespace WpfApp7.MVVM.ViewModel
 
         public RelayCommand OpenAddPositionWindow
         {
-            get => _openAddPositionWindow ?? new RelayCommand(e => { OpenAddNewPositionWindow(); });
+            get
+            {
+                return _openAddPositionWindow ?? new RelayCommand(e => { OpenAddNewPositionWindow(); });
+            }
         }
-
         private readonly RelayCommand? _openAddEmpWindow;
 
         public RelayCommand OpenAddEmpWindow
         {
-            get => _openAddEmpWindow ?? new RelayCommand(e => { OpenAddEmployeeWindow(); });
+            get
+            {
+                return _openAddEmpWindow ?? new RelayCommand(e => { OpenAddEmployeeWindow(); });
+            }
 
         }
 
@@ -143,178 +146,195 @@ namespace WpfApp7.MVVM.ViewModel
 
         public RelayCommand OpenEditItem
         {
-            get => _openEditItem ?? new RelayCommand(e =>
+            get
             {
-                if(SelectedTabItem.Name == "EmployeeTab" && SelectedEmployee != null)
+                return _openEditItem ?? new RelayCommand(e =>
                 {
-                    OpenEditEmployeeWindow(SelectedEmployee);
-                }
+                    if (SelectedTabItem.Name == "EmployeeTab" && SelectedEmployee != null)
+                    {
+                        OpenEditEmployeeWindow(SelectedEmployee);
+                    }
 
-                if (SelectedTabItem.Name == "PositionsTab" && SelectedPosition != null)
-                {
-                    OpenEditPositionWindow(SelectedPosition);
-                }
+                    if (SelectedTabItem.Name == "PositionsTab" && SelectedPosition != null)
+                    {
+                        OpenEditPositionWindow(SelectedPosition);
+                    }
 
-                if (SelectedTabItem.Name == "DepartmentsTab" && SelectedDepartment != null)
-                {
-                    OpenEditDepartmentWindow(SelectedDepartment);
-                }
-
-            });
+                    if (SelectedTabItem.Name == "DepartmentsTab" && SelectedDepartment != null)
+                    {
+                        OpenEditDepartmentWindow(SelectedDepartment);
+                    }
+                });
+            }
         }
 
         private RelayCommand? _createNewDepartment;
 
         public RelayCommand CreateNewDepartment
         {
-            get => _createNewDepartment ?? new RelayCommand(c =>
+            get
             {
-                Window? window = c as Window;
-                string resultStr = "";
-                if(DepartmentName == null || DepartmentName.Replace(" ", "").Length == 0)
+                return _createNewDepartment ?? new RelayCommand(c =>
                 {
-                    SetRedBlockControl(window, "TxbDepartmentName");
-                }
-                else
-                {
-                    resultStr = DataWorker.CreateDepartment(DepartmentName);
-                    UpdateDepartmentView();
-                    ShowMessageToUser(resultStr);
-                    SetNull();
-                    window.Close();
-                }
-            });
+                    Window? window = c as Window;
+                    string resultStr = "";
+                    if (DepartmentName == null || DepartmentName.Replace(" ", "").Length == 0)
+                    {
+                        SetRedBlockControl(window, "TxbDepartmentName");
+                    }
+                    else
+                    {
+                        resultStr = DataWorker.CreateDepartment(DepartmentName);
+                        UpdateDepartmentView();
+                        ShowMessageToUser(resultStr);
+                        SetNull();
+                        window.Close();
+                    }
+                });
+            }  
         }
 
         private readonly RelayCommand? _createNewPosition;
 
         public RelayCommand CreateNewPosition
         {
-            get => _createNewPosition ?? new RelayCommand(p =>
+            get
             {
-                Window? window = p as Window;
-                string resultStr = "";
-                if (PositionName == null || PositionName.Replace(" ", "").Length == 0)
+                return _createNewPosition ?? new RelayCommand(p =>
                 {
-                    SetRedBlockControl(window, "TxbPositionName");
-                }
-                if(PositionDepartment == null)
-                {
-                    MessageBox.Show("Отдел не выбран","Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                else
-                {
-                    resultStr = DataWorker.CreatePosition(PositionName, PositionSalary, PositionMaxCountOfEmp, PositionDepartment);
-                    UpdateDepartmentView();
-                    ShowMessageToUser(resultStr);
-                    SetNull();
-                    window.Close();
-                }
-            });
+                    Window? window = p as Window;
+                    string resultStr = "";
+                    if (PositionName == null || PositionName.Replace(" ", "").Length == 0)
+                    {
+                        SetRedBlockControl(window, "TxbPositionName");
+                    }
+                    if (PositionDepartment == null)
+                    {
+                        MessageBox.Show("Отдел не выбран", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        resultStr = DataWorker.CreatePosition(PositionName, PositionSalary, PositionMaxCountOfEmp, PositionDepartment);
+                        UpdateDepartmentView();
+                        ShowMessageToUser(resultStr);
+                        SetNull();
+                        window.Close();
+                    }
+                });
+            }
         }
 
         private readonly RelayCommand? _createNewEmployee;
 
         public RelayCommand CreateNewEmployee
         {
-            get => _createNewEmployee ?? new RelayCommand(e =>
+            get
             {
-                Window? window = e as Window;
-                string resultStr = "";
-                if (EmployeeName == null || EmployeeName.Replace(" ", "").Length == 0)
+                return _createNewEmployee ?? new RelayCommand(e =>
                 {
-                    SetRedBlockControl(window, "TxbName");
-                }
-                if (EmployeeName == null || EmployeeSurname.Replace(" ", "").Length == 0)
-                {
-                    SetRedBlockControl(window, "TxbSurname");
-                }
-                if (EmployeeName == null || EmployeePhone.Replace(" ", "").Length == 0)
-                {
-                    SetRedBlockControl(window, "TxbPhone");
-                }
-                if (PositionDepartment == null)
-                {
-                    MessageBox.Show("Должность не выбрана", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                else
-                {
-                    resultStr = DataWorker.CreateEmployee(EmployeeName, EmployeeSurname, EmployeePhone, EmployeePosition);
-                    UpdateDepartmentView();
-                    ShowMessageToUser(resultStr);
-                    SetNull();
-                    window.Close();
-                }
-            });
+                    Window? window = e as Window;
+                    string resultStr = "";
+                    if (EmployeeName == null || EmployeeName.Replace(" ", "").Length == 0)
+                    {
+                        SetRedBlockControl(window, "TxbName");
+                    }
+                    if (EmployeeName == null || EmployeeSurname.Replace(" ", "").Length == 0)
+                    {
+                        SetRedBlockControl(window, "TxbSurname");
+                    }
+                    if (EmployeeName == null || EmployeePhone.Replace(" ", "").Length == 0)
+                    {
+                        SetRedBlockControl(window, "TxbPhone");
+                    }
+                    if (PositionDepartment == null)
+                    {
+                        MessageBox.Show("Должность не выбрана", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        resultStr = DataWorker.CreateEmployee(EmployeeName, EmployeeSurname, EmployeePhone, EmployeePosition);
+                        UpdateDepartmentView();
+                        ShowMessageToUser(resultStr);
+                        SetNull();
+                        window.Close();
+                    }
+                });
+            }
         }
 
         private readonly RelayCommand? _deleteItem;
 
         public RelayCommand DeleteItem
         {
-            get => _deleteItem ?? new RelayCommand(d =>
+            get
             {
-                string resultString = "Данные для удаления нет!";
-
-                if (SelectedTabItem.Name == "EmployeeTab" && SelectedEmployee != null)
+                return _deleteItem ?? new RelayCommand(d =>
                 {
-                    resultString = DataWorker.DeleteEmployee(SelectedEmployee);
-                    UpdateAllDataView();
-                }
+                    string resultString = "Данные для удаления нет!";
 
-                if (SelectedTabItem.Name == "PositionTab" && SelectedPosition != null)
-                {
-                    resultString = DataWorker.DeletePosition(SelectedPosition);
-                    UpdateAllDataView();
-                }
+                    if (SelectedTabItem.Name == "EmployeeTab" && SelectedEmployee != null)
+                    {
+                        resultString = DataWorker.DeleteEmployee(SelectedEmployee);
+                        UpdateAllDataView();
+                    }
 
-                if (SelectedTabItem.Name == "DepartmentsTab" && SelectedDepartment != null)
-                {
-                    resultString = DataWorker.DeleteDepartment(SelectedDepartment);
-                    UpdateAllDataView();
-                }
+                    if (SelectedTabItem.Name == "PositionTab" && SelectedPosition != null)
+                    {
+                        resultString = DataWorker.DeletePosition(SelectedPosition);
+                        UpdateAllDataView();
+                    }
 
-                SetNull();
-                ShowMessageToUser(resultString);
+                    if (SelectedTabItem.Name == "DepartmentsTab" && SelectedDepartment != null)
+                    {
+                        resultString = DataWorker.DeleteDepartment(SelectedDepartment);
+                        UpdateAllDataView();
+                    }
 
-            });
+                    SetNull();
+                    ShowMessageToUser(resultString);
+
+                });
+            }
         }
 
         private readonly RelayCommand? _editEmployee;
 
         public RelayCommand EditEmployee
         {
-            get => _editEmployee ?? new RelayCommand(e =>
+            get
             {
-                Window? window = e as Window;
-
-                string resultString = "Работник не выбран!";
-                string noPositionStr = "Должность не выбрана!";
-
-
-                if(SelectedEmployee != null)
+                return _editEmployee ?? new RelayCommand(e =>
                 {
-                    if(EmployeePosition != null)
+                    Window? window = e as Window;
+
+                    string resultString = "Работник не выбран!";
+                    string noPositionStr = "Должность не выбрана!";
+
+
+                    if (SelectedEmployee != null)
                     {
-                        resultString = DataWorker.EditEmloyee(SelectedEmployee,
-                            EmployeeName, EmployeeSurname, EmployeePhone, EmployeePosition);
-                        UpdateAllDataView();
-                        SetNull();
-                        ShowMessageToUser(resultString);
-                        window.Close();
+                        if (EmployeePosition != null)
+                        {
+                            resultString = DataWorker.EditEmloyee(SelectedEmployee,
+                                EmployeeName, EmployeeSurname, EmployeePhone, EmployeePosition);
+                            UpdateAllDataView();
+                            SetNull();
+                            ShowMessageToUser(resultString);
+                            window.Close();
+                        }
+                        else
+                        {
+                            ShowMessageToUser(noPositionStr);
+                        }
                     }
+
                     else
                     {
-                        ShowMessageToUser(noPositionStr);
+                        ShowMessageToUser(resultString);
                     }
-                }
 
-                else
-                {
-                    ShowMessageToUser(resultString);
-                }
-
-            });
+                });
+            }
         }
 
 
@@ -359,30 +379,33 @@ namespace WpfApp7.MVVM.ViewModel
 
         public RelayCommand EditDepartment
         {
-            get => _editDepartment ?? new RelayCommand(d =>
+            get
             {
-                Window? window = d as Window;
-
-                string resultString = "Отдел не выбран!";
-
-
-                if (SelectedDepartment != null)
+                return _editDepartment ?? new RelayCommand(d =>
                 {
-                    
+                    Window? window = d as Window;
+
+                    string resultString = "Отдел не выбран!";
+
+
+                    if (SelectedDepartment != null)
+                    {
+
                         resultString = DataWorker.EditDepartment(SelectedDepartment, DepartmentName);
                         UpdateAllDataView();
                         SetNull();
                         ShowMessageToUser(resultString);
                         window.Close();
-  
-                }
 
-                else
-                {
-                    ShowMessageToUser(resultString);
-                }
+                    }
 
-            });
+                    else
+                    {
+                        ShowMessageToUser(resultString);
+                    }
+
+                });
+            }
         }
 
         private void UpdateDepartmentView()
@@ -447,7 +470,6 @@ namespace WpfApp7.MVVM.ViewModel
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-
         public void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

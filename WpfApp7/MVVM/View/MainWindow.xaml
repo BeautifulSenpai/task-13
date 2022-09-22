@@ -153,8 +153,8 @@
                         </ContextMenu>
                     </TabItem.ContextMenu>
                     <ListView x:Name="LVDepartment"
-                              ItemsSource="{Binding AllPositions}"
-                              SelectedItem="{Binding SelectedPosition}">
+                              ItemsSource="{Binding AllDepartments}"
+                              SelectedItem="{Binding SelectedDepartment}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Отдел"

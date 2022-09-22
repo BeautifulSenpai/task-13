@@ -65,7 +65,7 @@
                 Text="{Binding Surname}"
                 MaxLength="25"
                 FontSize="18"
-                materialDesign:TransitionAssist.DisableTransitions="True"/>
+                materialDesign:TransitionAssist.DisableTransitions="True" Cursor="Arrow"/>
             <TextBlock Text="Имя"
                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"/>
             <TextBox

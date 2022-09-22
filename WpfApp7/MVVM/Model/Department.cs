@@ -17,7 +17,10 @@ namespace WpfApp7.MVVM.Model
         [NotMapped]
         public List<Position> DepartmentPositions
         {
-            get => DataWorker.GetAllPositionsByDepartmentID(ID);
+            get
+            {
+                return DataWorker.GetAllPositionsByDepartmentID(ID);
+            }
         }
     }
 }

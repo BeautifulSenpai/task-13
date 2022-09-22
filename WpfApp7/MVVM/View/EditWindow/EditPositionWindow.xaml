@@ -84,8 +84,8 @@
                 Text="{Binding PositionMaxCountOfEmp}"
                 materialDesign:TransitionAssist.DisableTransitions="True"/>
             <ComboBox x:Name="CmbDepartment"
-                      ItemsSource="{Binding AllDepartments}"
-                      SelectedItem="{Binding PositiobDepartment}"
+                      ItemsSource="{Binding AllPositions}"
+                      SelectedItem="{Binding PositionDepartment}"
                       DisplayMemberPath="DepartmentName"
                       Margin="0 5 0 0"
                       materialDesign:HintAssist.Hint="Отдел"

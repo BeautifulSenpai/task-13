@@ -21,7 +21,7 @@ namespace WpfApp7.MVVM.Model.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
-            dbContextOptionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Task13DB;Trusted_Connection=True");
+            dbContextOptionsBuilder.UseSqlServer("Data Source=DESKTOP-23VAUCU;Initial Catalog=Task13;Integrated Security=True");
         }
     }
 }
