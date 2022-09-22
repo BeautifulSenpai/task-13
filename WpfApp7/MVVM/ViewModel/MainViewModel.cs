@@ -215,7 +215,7 @@ namespace WpfApp7.MVVM.ViewModel
                     else
                     {
                         resultStr = DataWorker.CreatePosition(PositionName, PositionSalary, PositionMaxCountOfEmp, PositionDepartment);
-                        UpdateDepartmentView();
+                        UpdatePositionView();
                         ShowMessageToUser(resultStr);
                         SetNull();
                         window.Close();
@@ -253,7 +253,7 @@ namespace WpfApp7.MVVM.ViewModel
                     else
                     {
                         resultStr = DataWorker.CreateEmployee(EmployeeName, EmployeeSurname, EmployeePhone, EmployeePosition);
-                        UpdateDepartmentView();
+                        UpdateEmployeeView();
                         ShowMessageToUser(resultStr);
                         SetNull();
                         window.Close();
