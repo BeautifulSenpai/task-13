@@ -150,21 +150,21 @@ namespace WpfApp7.MVVM.ViewModel
             {
                 return _openEditItem ?? new RelayCommand(e =>
                 {
-                    if (SelectedTabItem.Name == "EmployeeTab" && SelectedEmployee != null)
+                    if(SelectedTabItem.Name == "EmployeeTab" && SelectedEmployee != null)
                     {
                         OpenEditEmployeeWindow(SelectedEmployee);
                     }
-
-                    if (SelectedTabItem.Name == "PositionsTab" && SelectedPosition != null)
+                    if(SelectedTabItem.Name == "PositionsTab" && SelectedPosition != null)
                     {
                         OpenEditPositionWindow(SelectedPosition);
                     }
-
-                    if (SelectedTabItem.Name == "DepartmentsTab" && SelectedDepartment != null)
+                    if(SelectedTabItem.Name == "DepartmentTab" && SelectedDepartment != null)
                     {
                         OpenEditDepartmentWindow(SelectedDepartment);
                     }
                 });
+
+                
             }
         }
 
@@ -278,13 +278,13 @@ namespace WpfApp7.MVVM.ViewModel
                         UpdateAllDataView();
                     }
 
-                    if (SelectedTabItem.Name == "PositionTab" && SelectedPosition != null)
+                    if (SelectedTabItem.Name == "PositionsTab" && SelectedPosition != null)
                     {
                         resultString = DataWorker.DeletePosition(SelectedPosition);
                         UpdateAllDataView();
                     }
 
-                    if (SelectedTabItem.Name == "DepartmentsTab" && SelectedDepartment != null)
+                    if (SelectedTabItem.Name == "DepartmentTab" && SelectedDepartment != null)
                     {
                         resultString = DataWorker.DeleteDepartment(SelectedDepartment);
                         UpdateAllDataView();
@@ -315,7 +315,7 @@ namespace WpfApp7.MVVM.ViewModel
                     {
                         if (EmployeePosition != null)
                         {
-                            resultString = DataWorker.EditEmloyee(SelectedEmployee,
+                            resultString = DataWorker.EditEmployee(SelectedEmployee,
                                 EmployeeName, EmployeeSurname, EmployeePhone, EmployeePosition);
                             UpdateAllDataView();
                             SetNull();

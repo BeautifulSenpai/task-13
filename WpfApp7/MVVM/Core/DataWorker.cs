@@ -170,7 +170,7 @@ namespace WpfApp7.MVVM.Core
             return result;
         }
 
-        public static string EditEmloyee(Employee employeeName, string newName, 
+        public static string EditEmployee(Employee employeeName, string newName, 
             string newSurname, string newPhone, Position newPosition)
         {
             string result = "Такого работника не существует";

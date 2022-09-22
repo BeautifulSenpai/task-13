@@ -19,7 +19,7 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         AllowsTransparency="True"
-        x:Name="EditWinEmp">
+        x:Name="EditWinEmp" Cursor="Hand">
     <Window.DataContext>
         <viewmodel:MainViewModel/>
     </Window.DataContext>
